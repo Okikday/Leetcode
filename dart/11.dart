@@ -1,42 +1,29 @@
-// import 'dart:math' as math;
+import "dart:math" as math;
 
-// // first, second
-// typedef HiPair = ({Hi a, Hi b});
-// // pair, difference (difference between heights or y)
-// typedef HiPairWithDiffPair = ({HiPair p, int d});
+class Solution {
+  int maxArea(List<int> height) {
+    int maximumArea = 0; // Start off with 0
+    int left = 0; // Start point on x axis
+    int right = height.length - 1; // End point on x axis (totalWidth)
+    if (right <= 0) return 0;
 
-// class Solution {
-//   HiPair? current;
-//   final hiDiffList = <HiPairWithDiffPair>[];
+    while (right > left) {
+      final leftH = height[left]; // Current height of the left pointer
+      final rightH = height[right]; // Current height of the right pointer
 
-//   int maxArea(List<int> height) {
-//     // compare for each index with index+1
-//     for (int i = 0; i < height.length - 2; i++) {
-//       final a = height[i];
-//       final b = height[i + 1];
+      final currArea = _computeArea(left, right, leftH, rightH); // The area between the left and right pointer
 
-//       final pair = (a: Hi(v: a, i: i), b: Hi(v: b, i: i + 1));
+      // Since we are looking for the maximum area, we check if the one we just computed is greater than the one we've already found. If so, we set it
+      if (currArea > maximumArea) maximumArea = currArea;
 
-//       if (i == 0) {
-//         current = pair;
-//         pushInHiDiffMap(pair);
-//       } else {}
-//     }
-//   }
+      // If the left line height is greater than that of the right, move to the right (ignore the shorter line on the right, there may be a taller one on the left)
+      leftH > rightH ? right-- : left++;
+    }
 
-//   void pushInHiDiffMap(HiPair pair) => hiDiffList.add((d: pair.a.difference(pair.b), p: pair));
-// }
+    return maximumArea;
+  }
 
-// class Hi {
-//   /// Stands for value
-//   int v;
-
-//   /// Stands for index
-//   int i;
-
-//   Hi({required this.v, required this.i});
-
-//   int difference(Hi b) => (b.i - i).abs();
-// }
-
-// int area(Hi a, Hi b) => math.min(a.v, b.v) * a.difference(b);
+  /// Returns the area between two heights,
+  /// by multiplying the mininum of the both heights (which is the max height a liquid can fill) and width between them
+  int _computeArea(int x1, int x2, int y1, int y2) => math.min(y1, y2) * (x2 - x1).abs();
+}
