@@ -55,9 +55,3 @@ void main() {
     ], "ABCCED")}",
   );
 }
-
-class Position {
-  final int left;
-  final int right;
-  const Position(this.left, this.right);
-}
