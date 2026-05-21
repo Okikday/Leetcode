@@ -32,7 +32,7 @@ class Solution {
     return str;
   }
 
-  int digitLength(int digit) => digit == 0 ? 1 : (math.log(digit.abs()) / math.log(10)).truncate() + 1;
+  int digitLength(int digit) => digit.abs().toString().length;
 
   int firstDigit(int digit, int times) => digit ~/ times.toInt();
 
