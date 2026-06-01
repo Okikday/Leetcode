@@ -6,6 +6,7 @@ class Solution {
 
     while (nums[tail] <= nums[head] && max >= 0) {
       final tmp = nums[tail];
+
       nums.removeAt(tail);
       nums.insert(head, tmp);
       max--;
