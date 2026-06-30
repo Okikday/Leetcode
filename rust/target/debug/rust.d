@@ -1,1 +1,1 @@
-C:\Users\Okikiola\Projects\Leetcode\rust\target\debug\rust.exe: C:\Users\Okikiola\Projects\Leetcode\rust\src\main.rs
+/Users/user/FlutterProjects/Personal/Leetcode/rust/target/debug/rust: /Users/user/FlutterProjects/Personal/Leetcode/rust/src/main.rs

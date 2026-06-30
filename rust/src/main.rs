@@ -1,20 +1,16 @@
-// impl Solution {
-//     pub fn is_palindrome(s: String) -> bool {
-//         let s_lower = s.to_lowercase();
-//         let s_formatted = s_lower.trim();
-//         let s_stripped = s_formatted.split(" ");
-//         let mut formatted_s = String::new();
-//         let s_folded = s_stripped.map(|x| formatted_s.push_str(x));
-//         let
+impl Solution {
+    pub fn is_palindrome(s: String) -> bool {
+        let iter = s
+            .chars()
+            .filter(|x| x.is_ascii_alphanumeric())
+            .map(|f| f.to_ascii_lowercase());
 
-//         if formatted_s == formatted_s.
+        iter.clone().eq(iter.rev())
+    }
+}
 
-//         false
-//     }
-// }
+struct Solution {}
 
-// struct Solution {}
-
-// pub fn main() {
-//     Solution::is_palindrome(String::from("Was it a car or a cat I saw?"));
-// }
+pub fn main() {
+    Solution::is_palindrome(String::from("Was it a car or a cat I saw?"));
+}
