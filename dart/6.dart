@@ -62,7 +62,7 @@ class Solution {
         result.addAll(zigList[0]);
       else {
         final onlyList = zigList[0];
-        final rem = onlyList.length / numRows;
+        // final rem = onlyList.length / numRows;
       }
     } else {
       for (int total = 0; total < maxIterations; total++) {
@@ -70,7 +70,8 @@ class Solution {
 
         for (int row = 0; row < zigListLen; row++) {
           final innerZig = zigList[row];
-          if (col > zigListLen) print("row: $row, col: $col, in LIST: $innerZig");
+          if (col > zigListLen)
+            print("row: $row, col: $col, in LIST: $innerZig");
           print("suf[$col][$row]");
 
           final innerZigLen = innerZig.length;
@@ -81,7 +82,9 @@ class Solution {
                   (innerZigLen == 1 && col == innerZigLen)
               ? null
               : innerZig[col];
-          final suf = col == 0 || col > ((innerZigLen - 1) / 2).floor() ? null : innerZig[innerZigLen - col];
+          final suf = col == 0 || col > ((innerZigLen - 1) / 2).floor()
+              ? null
+              : innerZig[innerZigLen - col];
 
           if (pre != null) result.add(pre);
           print("Added pre: $pre");
