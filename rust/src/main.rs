@@ -1,11 +1,17 @@
-impl Solution {
-    pub fn is_palindrome(s: String) -> bool {
-        let iter = s
-            .chars()
-            .filter(|x| x.is_ascii_alphanumeric())
-            .map(|f| f.to_ascii_lowercase());
+use std::collections::HashMap;
 
-        iter.clone().eq(iter.rev())
+impl Solution {
+    pub fn group_anagrams(strs: Vec<String>) -> Vec<Vec<String>> {
+        let mut groups: HashMap<String, Vec<String>> = HashMap::new();
+
+        for s in strs {
+            let mut chars: Vec<char> = s.chars().collect();
+            chars.sort_unstable();
+            let sorted_char = chars.into_iter().collect();
+
+            groups.entry(sorted_char).or_insert(Vec::new()).push(s);
+        }
+        groups.into_values().collect()
     }
 }
 
