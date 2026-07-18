@@ -14,3 +14,5 @@
 //         groups.into_values().collect()
 //     }
 // }
+
+pub fn main() {}
